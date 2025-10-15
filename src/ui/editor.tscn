@@ -1,0 +1,150 @@
+[gd_scene load_steps=15 format=3 uid="uid://basehnflyvuqf"]
+
+[ext_resource type="Script" uid="uid://cnxe2g7aiuk5p" path="res://src/ui/editor.gd" id="1_q1gxt"]
+[ext_resource type="Texture2D" uid="uid://c6mh46k0tx8lp" path="res://assets/tiles/suelo.png" id="2_ylpmj"]
+[ext_resource type="Texture2D" uid="uid://dp284pywptynf" path="res://assets/tiles/cesped.png" id="3_q1gxt"]
+[ext_resource type="Texture2D" uid="uid://5tudur227pmu" path="res://assets/tiles/ladrillo.png" id="4_dfojr"]
+[ext_resource type="Texture2D" uid="uid://bq2j4ip5knuvg" path="res://assets/tiles/suelo_alt.png" id="5_dfojr"]
+[ext_resource type="Texture2D" uid="uid://45u03aosih2x" path="res://assets/tiles/cesped_alt.png" id="6_581oy"]
+[ext_resource type="Texture2D" uid="uid://bxx8ix73aby7i" path="res://assets/tiles/ladrillo_alt.png" id="7_581oy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ylpmj"]
+texture = ExtResource("2_ylpmj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dfojr"]
+texture = ExtResource("3_q1gxt")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_581oy"]
+texture = ExtResource("4_dfojr")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74j6c"]
+texture = ExtResource("5_dfojr")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdsvt"]
+texture = ExtResource("6_581oy")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_41iea"]
+texture = ExtResource("7_581oy")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_74j6c"]
+sources/0 = SubResource("TileSetAtlasSource_ylpmj")
+sources/1 = SubResource("TileSetAtlasSource_dfojr")
+sources/2 = SubResource("TileSetAtlasSource_581oy")
+sources/3 = SubResource("TileSetAtlasSource_74j6c")
+sources/4 = SubResource("TileSetAtlasSource_sdsvt")
+sources/5 = SubResource("TileSetAtlasSource_41iea")
+
+[node name="Editor" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_q1gxt")
+
+[node name="MenuPrincipal" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="MenuPrincipal"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="MenuPrincipal"]
+layout_mode = 2
+
+[node name="EditorUI" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 83.0
+mouse_filter = 2
+
+[node name="TM_Background" type="TileMap" parent="EditorUI"]
+tile_set = SubResource("TileSet_74j6c")
+rendering_quadrant_size = 32
+format = 2
+layer_1/name = "Layer1"
+
+[node name="Palette" type="VBoxContainer" parent="EditorUI"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LabelMode" type="Label" parent="EditorUI/Palette"]
+layout_mode = 2
+
+[node name="ButtonSuelo" type="Button" parent="EditorUI/Palette"]
+layout_mode = 2
+
+[node name="ButtonCesped" type="Button" parent="EditorUI/Palette"]
+layout_mode = 2
+
+[node name="ButtonLadrillo" type="Button" parent="EditorUI/Palette"]
+layout_mode = 2
+
+[node name="ButtonSave" type="Button" parent="EditorUI/Palette"]
+layout_mode = 2
+text = "Guardar Mapa
+"
+
+[node name="ButtonToggleCollision" type="Button" parent="EditorUI/Palette"]
+layout_mode = 2
+text = "Colision"
+
+[node name="ButtonChangeColor" type="Button" parent="EditorUI/Palette"]
+layout_mode = 2
+text = "Change Color"
+
+[node name="ButtonExportPNG" type="Button" parent="EditorUI/Palette"]
+layout_mode = 2
+
+[node name="ButtonUndo" type="Button" parent="EditorUI"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Undo"
+
+[node name="ButtonRedo" type="Button" parent="EditorUI"]
+layout_mode = 2
+text = "Redo"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
